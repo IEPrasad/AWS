@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Update package lists
+sudo apt update
+
+# Install Apache
+sudo apt install -y apache2
+
+
+# Create index.html with sample content
+echo '<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Page</title>
+</head>
+<body>
+    <h1>Thank you malith ayye!</h1>
+</body>
+</html>' | sudo tee /var/www/html/index.html
+
+# Ensure Apache service is running
+sudo systemctl start apache2
+sudo systemctl enable apache2
+
+# Display the status of Apache
+sudo systemctl status apache2
